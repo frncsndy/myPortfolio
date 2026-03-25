@@ -154,6 +154,46 @@
       box-shadow: 0 0 14px rgba(0,229,176,0.1);
     }
 
+    /* Mobile menu */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .mobile-menu.active {
+      max-height: 400px;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      justify-content: center;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background: #00e5b0;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
     /* Noise overlay */
     body::before {
       content: '';
@@ -172,6 +212,8 @@
   <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-16 py-5"
        style="background:rgba(7,9,13,0.88); backdrop-filter:blur(16px); border-bottom:1px solid rgba(0,229,176,0.08);">
     <a href="#hero" class="font-syne font-extrabold text-accent tracking-widest text-sm">FANS<span class="text-white opacity-50">.</span>DEV</a>
+    
+    <!-- Desktop menu -->
     <ul class="hidden md:flex gap-10 list-none">
       <li><a href="#about"     class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors hover-line">About</a></li>
       <li><a href="#skills"    class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors hover-line">Skills</a></li>
@@ -179,6 +221,8 @@
       <li><a href="#education" class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors hover-line">Education</a></li>
       <li><a href="#contact"   class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors hover-line">Contact</a></li>
     </ul>
+
+    <!-- Desktop social icons -->
     <div class="hidden md:flex items-center gap-3">
       <a href="https://github.com/frncsndy" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-sm flex items-center justify-center text-accent hover:bg-accent/10 transition-all" title="GitHub">
         <i class="fa-brands fa-github text-base"></i>
@@ -192,7 +236,33 @@
         Contact
       </a>
     </div>
+
+    <!-- Mobile hamburger button -->
+    <div class="md:hidden flex items-center gap-4">
+      <a href="https://github.com/frncsndy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-white transition-colors" title="GitHub">
+        <i class="fa-brands fa-github text-lg"></i>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
   </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu md:hidden fixed top-16 left-0 right-0 z-40" id="mobileMenu"
+       style="background:rgba(7,9,13,0.95); border-bottom:1px solid rgba(0,229,176,0.08);">
+    <ul class="flex flex-col list-none px-8 py-4 gap-4">
+      <li><a href="#about"     class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#skills"    class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors" onclick="closeMobileMenu()">Skills</a></li>
+      <li><a href="#projects"  class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors" onclick="closeMobileMenu()">Projects</a></li>
+      <li><a href="#education" class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors" onclick="closeMobileMenu()">Education</a></li>
+      <li><a href="#contact"   class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors" onclick="closeMobileMenu()">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/francis-andy-sebastian-1b25b422a/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs text-muted hover:text-accent tracking-widest uppercase transition-colors">LinkedIn</a></li>
+      <li><a href="mailto:francisandysebastian@gmail.com" class="font-mono text-xs text-accent tracking-widest uppercase px-5 py-2 rounded-sm transition-all inline-block" style="border:1px solid rgba(0,229,176,0.3);">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- ═══════════ HERO ═══════════ -->
   <section id="hero" class="relative min-h-screen flex items-center grid-bg overflow-hidden px-8 md:px-20 pt-28 pb-20">
@@ -753,6 +823,20 @@
 
   <!-- ═══════════ SCRIPTS ═══════════ -->
   <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+
     // Cursor glow
     const glow = document.getElementById('cursorGlow');
     document.addEventListener('mousemove', e => {
