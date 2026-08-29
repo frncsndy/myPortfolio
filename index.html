@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Francis Andy N. Sebastian | Portfolio</title>
+  <meta name="description" content="Portfolio of Francis Andy N. Sebastian, a developer and IT specialist focused on web systems, database management, and IoT solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['Manrope', 'sans-serif'],
+          },
+          colors: {
+            ink: '#0f172a',
+            mist: '#f8fafc',
+            panel: '#ffffff',
+            accent: '#0f766e',
+            accentSoft: '#e6fffb',
+            muted: '#5f6f81',
+            line: '#dfe7ee',
+            glow: '#14b8a6'
+          },
+          boxShadow: {
+            soft: '0 20px 45px rgba(15,23,42,0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #f7f9f8;
+      --panel: #ffffff;
+      --panel-alt: #f1f6f5;
+      --line: #dfe7ee;
+      --text: #102033;
+      --muted: #5f6f81;
+      --accent: #0f766e;
+      --accent-strong: #115e59;
+      --accent-soft: #e9f9f7;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .font-display {
+      font-family: 'Syne', sans-serif;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: #edfaf7;
+      border: 1px solid rgba(15, 118, 110, 0.15);
+      color: var(--accent);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .soft-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.04);
+      backdrop-filter: blur(8px);
+    }
+
+    .hover-lift {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      border-color: rgba(15, 118, 110, 0.25);
+      box-shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 118, 110, 0.15);
+      background: rgba(15, 118, 110, 0.04);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .page-shell {
+      background-image:
+        radial-gradient(circle at top left, rgba(20, 184, 166, 0.1), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.08), transparent 22%);
+    }
+
+    .skill-bar {
+      position: relative;
+      height: 10px;
+      border-radius: 999px;
+      background: #edf2f5;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--level);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent) 0%, #2dd4bf 100%);
+      box-shadow: 0 8px 18px rgba(20, 184, 166, 0.18);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-line {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .timeline-line::before {
+      content: "";
+      position: absolute;
+      left: 0.15rem;
+      top: 0.2rem;
+      bottom: 0.2rem;
+      width: 1px;
+      background: rgba(15, 118, 110, 0.2);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.45rem;
+      top: 0.65rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(15, 118, 110, 0.09);
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.28s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 420px;
+    }
+
+    @media (max-width: 767px) {
+      .hero-portrait {
+        max-width: 420px;
+        margin-inline: auto;
+      }
+    }
+
+    .pdf-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      z-index: 100;
+    }
+
+    .pdf-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .pdf-modal-panel {
+      width: min(1100px, 100%);
+      height: min(90vh, 820px);
+      background: white;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(15, 118, 110, 0.15);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.25);
+      transform: translateY(20px);
+      transition: transform 0.25s ease;
+    }
+
+    .pdf-modal.open .pdf-modal-panel {
+      transform: translateY(0);
+    }
+
+    .pdf-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #e2e8f0;
+      background: #f8fafc;
+    }
+
+    .pdf-modal-frame {
+      width: 100%;
+      height: calc(100% - 72px);
+      border: none;
+      display: block;
+      background: white;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-width: 170px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.8;
+      cursor: wait;
+    }
+
+    .submit-btn .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+
+    .submit-btn.loading .spinner {
+      display: inline-block;
+    }
+
+    .submit-btn.loading .btn-text {
+      opacity: 0.9;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell min-h-screen">
+    <nav class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8 lg:px-10">
+        <a href="#hero" class="font-display text-lg font-extrabold tracking-[0.18em] text-slate-900">
+          FANS<span class="text-accent">.</span>
+        </a>
+
+        <div class="hidden items-center gap-8 md:flex">
+          <a href="#about" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:text-accent">About</a>
+          <a href="#skills" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:text-accent">Skills</a>
+          <a href="#projects" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:text-accent">Projects</a>
+          <a href="#education" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:text-accent">Education</a>
+          <a href="#contact" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:text-accent">Contact</a>
+        </div>
+
+        <div class="hidden items-center gap-3 md:flex">
+          <a href="https://github.com/frncsndy" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-accent hover:text-accent">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/francis-andy-sebastian-1b25b422a/" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-accent hover:text-accent">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" data-open-cv class="rounded-full border border-accent bg-accent px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-accent-strong">
+            CV
+          </a>
+        </div>
+
+        <button id="menuToggle" class="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 md:hidden" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="mobile-menu border-t border-slate-200 bg-white md:hidden">
+        <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-5">
+          <a href="#about" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">About</a>
+          <a href="#skills" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Skills</a>
+          <a href="#projects" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Projects</a>
+          <a href="#education" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Education</a>
+          <a href="#contact" class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Contact</a>
+          <a href="#" data-open-cv class="mt-2 inline-flex w-fit rounded-full border border-accent bg-accent px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white">
+            CV
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section id="hero" class="mx-auto max-w-6xl px-5 pb-20 pt-28 md:px-8 lg:px-10 lg:pt-32">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="reveal">
+            <span class="section-label">
+              <span class="h-2 w-2 rounded-full bg-accent"></span>
+              Available for opportunities
+            </span>
+            <h1 class="mt-7 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.05em] text-slate-900 md:text-6xl lg:text-7xl">
+              Francis Andy<br />
+              <span class="text-accent">N. Sebastian</span>
+            </h1>
+            <p class="mt-5 text-sm font-semibold uppercase tracking-[0.23em] text-slate-500 md:text-base">
+              Full Stack Developer • IT Specialist • Web Systems
+            </p>
+            <p class="mt-6 max-w-xl text-base leading-8 text-slate-600">
+              I build practical, user-centered digital solutions and support systems that combine strong technical thinking with real-world impact.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="#" data-open-cv class="rounded-full bg-accent px-6 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-white transition hover:bg-accent-strong">
+                CV
+              </a>
+              <a href="#projects" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-slate-700 transition hover:border-accent hover:text-accent">
+                View Projects
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal hero-portrait">
+            <div class="soft-card relative overflow-hidden rounded-[2rem] p-4">
+              <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-teal-200/40 blur-3xl"></div>
+              <div class="absolute -bottom-12 left-0 h-28 w-28 rounded-full bg-cyan-200/50 blur-3xl"></div>
+              <div class="relative overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-100">
+                <img src="img/profile.jpg" alt="Francis Andy N. Sebastian" class="h-[500px] w-full object-cover object-center md:h-[560px]" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="mx-auto max-w-6xl px-5 py-20 md:px-8 lg:px-10 reveal">
+        <div class="mb-10">
+          <span class="section-label">01 — About Me</span>
+          <h2 class="mt-5 font-display text-4xl font-bold tracking-[-0.04em] text-slate-900 md:text-5xl">
+            Building solutions with <span class="text-accent">clarity and purpose.</span>
+          </h2>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="soft-card rounded-[2rem] p-4">
+            <img src="img/profile.jpg" alt="Francis Andy N. Sebastian portrait" class="h-[440px] w-full rounded-[1.4rem] object-cover object-center md:h-[520px]" />
+          </div>
+
+          <div class="space-y-6">
+            <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+              <h3 class="font-display text-2xl font-bold text-slate-900">Francis Andy N. <span class="text-accent">Sebastian</span></h3>
+              <p class="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-accent">Full Stack Developer & IT Specialist</p>
+              <p class="mt-5 text-base leading-8 text-slate-600">
+                A results-driven developer with hands-on experience in web application development, database management, and IoT solutions. I enjoy turning technical requirements into practical systems that are easy to use, reliable, and efficient.
+              </p>
+              <p class="mt-4 text-base leading-8 text-slate-600">
+                From faculty portfolio systems to hardware-connected automation, I focus on building solutions that improve workflows, support users, and solve real-world problems with precision.
+              </p>
+            </div>
+
+            <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent"><i class="fa-solid fa-location-dot"></i></span>
+                  <span class="text-slate-600">Alibagu, City of Ilagan, Isabela</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent"><i class="fa-solid fa-phone"></i></span>
+                  <span class="text-slate-600">0961-609-1367</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent"><i class="fa-solid fa-envelope"></i></span>
+                  <a href="mailto:francisandysebastian@gmail.com" class="text-slate-600 transition hover:text-accent">francisandysebastian@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="bg-white py-20 reveal">
+        <div class="mx-auto max-w-6xl px-5 md:px-8 lg:px-10">
+          <div class="mb-10">
+            <span class="section-label">02 — Skills</span>
+            <h2 class="mt-5 font-display text-4xl font-bold tracking-[-0.04em] text-slate-900 md:text-5xl">
+              Tools and strengths <span class="text-accent">I bring to the table.</span>
+            </h2>
+          </div>
+
+          <div class="grid gap-8 lg:grid-cols-2">
+            <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+              <h3 class="font-display text-xl font-bold text-slate-900">Technical Skills</h3>
+              <div class="mt-8 space-y-6">
+                <div>
+                  <div class="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    <span>PHP / Web Development</span>
+                    <span class="text-accent">85%</span>
+                  </div>
+                  <div class="skill-bar"><span class="skill-fill" style="--level:85%"></span></div>
+                </div>
+                <div>
+                  <div class="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    <span>JavaScript / HTML / CSS</span>
+                    <span class="text-accent">80%</span>
+                  </div>
+                  <div class="skill-bar"><span class="skill-fill" style="--level:80%"></span></div>
+                </div>
+                <div>
+                  <div class="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    <span>MySQL / Database Management</span>
+                    <span class="text-accent">80%</span>
+                  </div>
+                  <div class="skill-bar"><span class="skill-fill" style="--level:80%"></span></div>
+                </div>
+                <div>
+                  <div class="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    <span>Python</span>
+                    <span class="text-accent">65%</span>
+                  </div>
+                  <div class="skill-bar"><span class="skill-fill" style="--level:65%"></span></div>
+                </div>
+                <div>
+                  <div class="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    <span>Arduino / ESP / IoT</span>
+                    <span class="text-accent">70%</span>
+                  </div>
+                  <div class="skill-bar"><span class="skill-fill" style="--level:70%"></span></div>
+                </div>
+                <div>
+                  <div class="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    <span>IT Support & Troubleshooting</span>
+                    <span class="text-accent">90%</span>
+                  </div>
+                  <div class="skill-bar"><span class="skill-fill" style="--level:90%"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-8">
+              <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+                <h3 class="font-display text-xl font-bold text-slate-900">Tools & Technologies</h3>
+                <div class="mt-6 flex flex-wrap gap-2.5">
+                  <span class="tech-pill">XAMPP</span>
+                  <span class="tech-pill">phpMyAdmin</span>
+                  <span class="tech-pill">VS Code</span>
+                  <span class="tech-pill">MIT App Inventor</span>
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">Arduino</span>
+                  <span class="tech-pill">ESP8266/ESP32</span>
+                  <span class="tech-pill">MySQL</span>
+                  <span class="tech-pill">HTML/CSS</span>
+                  <span class="tech-pill">JavaScript</span>
+                  <span class="tech-pill">PHP</span>
+                </div>
+              </div>
+
+              <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+                <h3 class="font-display text-xl font-bold text-slate-900">Soft Skills</h3>
+                <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-600">Quick Learner</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-600">Adaptable</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-600">UI/UX Design</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-600">Documentation</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-600">Project Organization</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-600">Problem Solving</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="mx-auto max-w-6xl px-5 py-20 md:px-8 lg:px-10 reveal">
+        <div class="mb-10">
+          <span class="section-label">03 — Projects</span>
+          <h2 class="mt-5 font-display text-4xl font-bold tracking-[-0.04em] text-slate-900 md:text-5xl">
+            Selected work and <span class="text-accent">key builds.</span>
+          </h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="soft-card hover-lift rounded-[1.75rem] p-6 md:p-8">
+            <div class="mb-6 flex items-center justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-soft text-lg text-accent"><i class="fa-solid fa-folder-open"></i></div>
+              <span class="rounded-full bg-accent-soft px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">Major Project</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-slate-900">DocQTrack</h3>
+            <p class="mt-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">Faculty Portfolio System</p>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              A comprehensive faculty document and portfolio management system with role-based access and efficient workflow tracking.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="tech-pill">PHP</span>
+              <span class="tech-pill">MySQL</span>
+              <span class="tech-pill">JavaScript</span>
+              <span class="tech-pill">HTML/CSS</span>
+              <span class="tech-pill">XAMPP</span>
+            </div>
+          </article>
+
+          <article class="soft-card hover-lift rounded-[1.75rem] p-6 md:p-8">
+            <div class="mb-6 flex items-center justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-50 text-lg text-cyan-600"><i class="fa-solid fa-microchip"></i></div>
+              <span class="rounded-full bg-cyan-50 px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-cyan-600">IoT / Hardware</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-slate-900">GSM-Based AC Control</h3>
+            <p class="mt-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-cyan-600">Arduino SMS Controller</p>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              An Arduino-powered air conditioning controller that responds to SMS commands via GSM technology for practical smart home control.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="tech-pill">Arduino</span>
+              <span class="tech-pill">GSM Module</span>
+              <span class="tech-pill">C++</span>
+              <span class="tech-pill">IoT</span>
+            </div>
+          </article>
+
+          <article class="soft-card hover-lift rounded-[1.75rem] p-6 md:p-8">
+            <div class="mb-6 flex items-center justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-soft text-lg text-accent"><i class="fa-solid fa-file-code"></i></div>
+              <span class="rounded-full bg-accent-soft px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">Web System</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-slate-900">Document Management System</h3>
+            <p class="mt-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">Enterprise Document Management</p>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              Built a document management platform with structured database architecture, feature implementation, and testing for operational reliability.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="tech-pill">PHP</span>
+              <span class="tech-pill">MySQL</span>
+              <span class="tech-pill">phpMyAdmin</span>
+            </div>
+          </article>
+
+          <article class="soft-card hover-lift rounded-[1.75rem] p-6 md:p-8">
+            <div class="mb-6 flex items-center justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-soft text-lg text-accent"><i class="fa-solid fa-gamepad"></i></div>
+              <span class="rounded-full bg-accent-soft px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">Mini Project</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-slate-900">Interactive Game</h3>
+            <p class="mt-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">Mobile App Development</p>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              A mobile game created with MIT App Inventor to showcase interactive design, logic development, and user-focused interface building.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="tech-pill">MIT App Inventor</span>
+              <span class="tech-pill">Logic Design</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="education" class="bg-white py-20 reveal">
+        <div class="mx-auto max-w-6xl px-5 md:px-8 lg:px-10">
+          <div class="mb-10">
+            <span class="section-label">04 — Education</span>
+            <h2 class="mt-5 font-display text-4xl font-bold tracking-[-0.04em] text-slate-900 md:text-5xl">
+              My academic <span class="text-accent">journey.</span>
+            </h2>
+          </div>
+
+          <div class="grid gap-8 lg:grid-cols-2">
+            <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+              <h3 class="font-display text-xl font-bold text-slate-900">Academic Background</h3>
+              <div class="timeline-line mt-8 space-y-8">
+                <div class="timeline-item relative">
+                  <p class="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">2021 – Present</p>
+                  <h4 class="mt-2 font-display text-xl font-bold text-slate-900">BS Information Technology</h4>
+                  <p class="mt-1 text-base text-slate-600">Isabela State University</p>
+                  <p class="mt-1 text-sm text-slate-500">Calamagui 2nd, City of Ilagan, Isabela</p>
+                </div>
+
+                <div class="timeline-item relative">
+                  <p class="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">2015 – 2021</p>
+                  <h4 class="mt-2 font-display text-xl font-bold text-slate-900">Secondary Education</h4>
+                  <p class="mt-1 text-base text-slate-600">Isabela National High School</p>
+                  <p class="mt-1 text-sm text-slate-500">San Vicente, City of Ilagan, Isabela</p>
+                </div>
+
+                <div class="timeline-item relative">
+                  <p class="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">2010 – 2015</p>
+                  <h4 class="mt-2 font-display text-xl font-bold text-slate-900">Primary Education</h4>
+                  <p class="mt-1 text-base text-slate-600">Ilagan South Central School</p>
+                  <p class="mt-1 text-sm text-slate-500">Calamagui 1st, City of Ilagan, Isabela</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-8">
+              <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+                <h3 class="font-display text-xl font-bold text-slate-900">Certification</h3>
+                <div class="mt-6 flex gap-4">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-soft text-accent"><i class="fa-solid fa-certificate"></i></div>
+                  <div>
+                    <p class="font-display text-lg font-bold text-slate-900">Certified IT Specialist in Database</p>
+                    <p class="mt-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-accent">Issued by Certiport</p>
+                    <p class="mt-2 text-sm text-slate-500">December 17, 2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="soft-card rounded-[1.75rem] p-6 md:p-8">
+                <h3 class="font-display text-xl font-bold text-slate-900">Seminar Attended</h3>
+                <div class="mt-6 flex gap-4">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-soft text-accent"><i class="fa-solid fa-shield-halved"></i></div>
+                  <div>
+                    <p class="font-display text-lg font-bold text-slate-900">Cybersecurity Seminar</p>
+                    <p class="mt-2 text-sm italic text-accent">"I Think: Stop Neglect, Protect before you Connect"</p>
+                    <p class="mt-2 text-sm text-slate-500">AVR, New CEAT – ISU Ilagan Campus · March 16, 2023</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="mx-auto max-w-6xl px-5 py-20 md:px-8 lg:px-10 reveal">
+        <div class="soft-card rounded-[2rem] p-8 md:p-12">
+          <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div>
+              <span class="section-label">05 — Contact</span>
+              <h2 class="mt-5 font-display text-4xl font-bold tracking-[-0.04em] text-slate-900 md:text-5xl">
+                Let’s build something <span class="text-accent">meaningful.</span>
+              </h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-slate-600">
+                I’m open to work, collaborations, and technology projects that combine practical impact with thoughtful design.
+              </p>
+
+              <div class="mt-8 space-y-4">
+                <div class="flex items-center gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent"><i class="fa-solid fa-envelope"></i></span>
+                  <a href="mailto:francisandysebastian@gmail.com" class="text-slate-600 transition hover:text-accent">francisandysebastian@gmail.com</a>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent"><i class="fa-solid fa-phone"></i></span>
+                  <span class="text-slate-600">0961-609-1367</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent"><i class="fa-brands fa-linkedin-in"></i></span>
+                  <a href="https://www.linkedin.com/in/francis-andy-sebastian-1b25b422a/" target="_blank" rel="noopener noreferrer" class="text-slate-600 transition hover:text-accent">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+
+            <form id="contactForm" action="https://formspree.io/f/maqlwzwz" method="POST" class="space-y-5 rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6 md:p-8">
+              <div id="formSuccess" class="hidden rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                Your message has been sent successfully. I’ll get back to you soon.
+              </div>
+
+              <div>
+                <label for="name" class="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Name</label>
+                <input id="name" name="name" type="text" required class="form-input w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-700 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" placeholder="Your name" />
+              </div>
+
+              <div>
+                <label for="email" class="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Email</label>
+                <input id="email" name="email" type="email" required class="form-input w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-700 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" placeholder="your@email.com" />
+              </div>
+
+              <div>
+                <label for="message" class="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Message</label>
+                <textarea id="message" name="message" rows="5" required class="form-input w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-700 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" placeholder="Tell me about your project or opportunity"></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn rounded-full bg-accent px-6 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-white transition hover:bg-accent-strong">
+                <span class="spinner"></span>
+                <span class="btn-text">Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white/80">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-6 text-sm text-slate-500 md:px-8 lg:px-10">
+        <p>© 2026 Francis Andy N. Sebastian</p>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/frncsndy" target="_blank" rel="noopener noreferrer" class="transition hover:text-accent"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/francis-andy-sebastian-1b25b422a/" target="_blank" rel="noopener noreferrer" class="transition hover:text-accent"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <div id="pdfModal" class="pdf-modal">
+      <div class="pdf-modal-panel">
+        <div class="pdf-modal-header">
+          <h3 class="text-lg font-bold text-slate-900">Curriculum Vitae</h3>
+          <button id="closePdfModal" class="text-slate-500 transition hover:text-slate-700">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <iframe src="IT-CV.pdf" class="pdf-modal-frame" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      menuToggle.innerHTML = mobileMenu.classList.contains('open')
+        ? '<i class="fa-solid fa-xmark text-lg"></i>'
+        : '<i class="fa-solid fa-bars text-lg"></i>';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
+      });
+    });
+
+    const form = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const submitButton = form ? form.querySelector('button[type="submit"]') : null;
+
+    if (form && submitButton) {
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        submitButton.disabled = true;
+        submitButton.classList.add('loading');
+        formSuccess.classList.add('hidden');
+        formSuccess.classList.remove('border-red-200', 'bg-red-50', 'text-red-700');
+        formSuccess.classList.add('border-emerald-200', 'bg-emerald-50', 'text-emerald-700');
+        formSuccess.textContent = 'Your message has been sent successfully. I’ll get back to you soon.';
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error('Form submission failed');
+          }
+
+          form.reset();
+          formSuccess.classList.remove('hidden');
+        } catch (error) {
+          formSuccess.textContent = 'Something went wrong. Please email me directly at francisandysebastian@gmail.com.';
+          formSuccess.classList.remove('hidden');
+          formSuccess.classList.remove('border-emerald-200', 'bg-emerald-50', 'text-emerald-700');
+          formSuccess.classList.add('border-red-200', 'bg-red-50', 'text-red-700');
+        } finally {
+          submitButton.disabled = false;
+          submitButton.classList.remove('loading');
+        }
+      });
+    }
+
+    const pdfModal = document.getElementById('pdfModal');
+    const closePdfModal = document.getElementById('closePdfModal');
+    const cvButtons = document.querySelectorAll('[data-open-cv]');
+
+    cvButtons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        pdfModal.classList.add('open');
+      });
+    });
+
+    closePdfModal.addEventListener('click', () => {
+      pdfModal.classList.remove('open');
+    });
+
+    pdfModal.addEventListener('click', (e) => {
+      if (e.target === pdfModal) {
+        pdfModal.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
